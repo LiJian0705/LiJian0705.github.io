@@ -5,15 +5,20 @@
   
 
   
-  <title>LiJian.blog</title>
+  <title>causal inference | LiJian.blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="LiJian.blog">
-<meta property="og:url" content="https://lijian0705.github.io/index.html">
+  <meta name="description" content="学习计划 基础学习：https://cosx.org/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/ 完整教材学习：https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">
+<meta name="keywords" content="因果推断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="causal inference">
+<meta property="og:url" content="https://lijian0705.github.io/2019/01/04/causal-inference/index.html">
 <meta property="og:site_name" content="LiJian.blog">
+<meta property="og:description" content="学习计划 基础学习：https://cosx.org/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/ 完整教材学习：https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-04T06:42:37.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LiJian.blog">
+<meta name="twitter:title" content="causal inference">
+<meta name="twitter:description" content="学习计划 基础学习：https://cosx.org/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/ 完整教材学习：https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/">
   
     <link rel="alternate" href="/atom.xml" title="LiJian.blog" type="application/atom+xml">
   
@@ -60,9 +65,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-causal-inference" class="article article-type-post" itemscope="" itemprop="blogPost">
+        <section id="main"><article id="post-causal-inference" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/01/04/causal-inference/" class="article-date">
   <time datetime="2019-01-04T05:54:46.000Z" itemprop="datePublished">2019-01-04</time>
@@ -75,8 +78,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/04/causal-inference/">causal inference</a>
+    <h1 class="article-title" itemprop="name">
+      causal inference
     </h1>
   
 
@@ -88,11 +91,32 @@
 <li>基础学习：<a href="https://cosx.org/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/" target="_blank" rel="noopener">https://cosx.org/tags/%E5%9B%A0%E6%9E%9C%E6%8E%A8%E6%96%AD/</a></li>
 <li>完整教材学习：<a href="https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/" target="_blank" rel="noopener">https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/</a></li>
 </ol>
-        
-          <p class="article-more-link">
-            <a href="/2019/01/04/causal-inference/#more">Read More</a>
-          </p>
-        
+<a id="more"></a>
+<h2 id="中文基础"><a href="#中文基础" class="headerlink" title="中文基础"></a>中文基础</h2><h3 id="Yule-Simpson’s-Paradox-混杂偏倚"><a href="#Yule-Simpson’s-Paradox-混杂偏倚" class="headerlink" title="Yule-Simpson’s Paradox (混杂偏倚)"></a>Yule-Simpson’s Paradox (混杂偏倚)</h3><ol>
+<li>基本描述：在一个统计实验中，总体的统计结论与变量分割后，分别进行统计的统计结论相反。<ul>
+<li>变量之间的关系可以完全被第三个变量的引入而扭曲</li>
+<li>由于收集数据的局限性，则额外的未知变量对结果有极大的影响</li>
+</ul>
+</li>
+<li>对因果推断的影响<ul>
+<li>对于观察到的样本，可能由于第三方变量的加入，导致内容的修正</li>
+</ul>
+</li>
+<li>个人理解：由于样本的不均衡，如果在两个特征上效果不一致，则不均衡的抽样可能会导致总体有偏，导致统计结果和最终的效果有偏</li>
+</ol>
+<h3 id="Rubin-Causal-Model-RCM-和随机化试验-【更为精确】"><a href="#Rubin-Causal-Model-RCM-和随机化试验-【更为精确】" class="headerlink" title="Rubin Causal Model (RCM) 和随机化试验 【更为精确】"></a>Rubin Causal Model (RCM) 和随机化试验 【更为精确】</h3><ol>
+<li>基本公式推论<ul>
+<li>假设Z<sub>i</sub>表示第i个样本中的一个二值化的特征取值</li>
+<li>Y<sub>i</sub>表示的是第i个样本的观测结果</li>
+<li>则Z<sub>i</sub>个体因果作用可以表示为：Y<sub>i</sub> = Y<sub>i</sub>(Z<sub>i</sub> = 1) - Y<sub>i</sub>(Z<sub>i</sub> = 0)</li>
+<li>由于 Z<sub>i</sub> = 0 和 Z<sub>i</sub> = 1 不会同时出现，则个体因果作用不可计算</li>
+<li>所以个体的观测结果为：Y<sub>i</sub> = (1 - (Z<sub>i</sub> = 0))(Y<sub>i</sub>(Z<sub>i</sub> = 0)) + (Z<sub>i</sub> = 1)(Y<sub>i</sub>(Z<sub>i</sub> = 1))</li>
+<li>当随机化Z<sub>i</sub>取值之后，总体在Z<sub>i</sub>上的平均因果作用可以表示未：ACE = E{Y<sub>i</sub>(Z<sub>i</sub> = 1) - Y<sub>i</sub>(Z<sub>i</sub> = 0)}</li>
+</ul>
+</li>
+<li>备注：非线性的算子导出的因果度量很难被识别</li>
+</ol>
+
       
     </div>
     <footer class="article-footer">
@@ -104,95 +128,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hexo-learn" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/31/hexo-learn/" class="article-date">
-  <time datetime="2018-12-30T16:04:23.000Z" itemprop="datePublished">2018-12-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/31/hexo-learn/">hexo learn</a>
-    </h1>
+    <a href="/2018/12/31/hexo-learn/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo learn</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>初步学习hexo部署自己的博客！</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/12/31/hexo-learn/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://lijian0705.github.io/2018/12/31/hexo-learn/" data-id="cjqhnyza80000eopd0eq95r1k" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/learn/">learn</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/12/18/hello-world/" class="article-date">
-  <time datetime="2018-12-18T08:25:31.457Z" itemprop="datePublished">2018-12-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/18/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/12/18/hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://lijian0705.github.io/2018/12/18/hello-world/" data-id="cjqhnyzb00003eopdn60jbel8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
